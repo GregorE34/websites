@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Display a map on a webpage</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.typekit.net/yyb6ssy.css">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js">
+	
+</script>
+<style>
+body { margin: 0; padding: 0; }
+h1 {font-family: flood-std, sans-serif; font-weight: 400; font-style: normal; font-size: 72pt; text-align: center;}
+h3 {text-align: center;}
+li {border: 1pt solid black; background-color: cornflowerblue}
+#map { position: absolute; top: 0; bottom: 0; width: 70%; }
+#info {position: absolute; top: 0; left: 75%; width: 20%; background-color: khaki;}
+#scroller {position: absolute; top: 60%; left: 75%; width: 20%; height: 35%; overflow-y: scroll; }
+
+</style>
+</head>
+<body>
+	<div id="info">
+		<h1>OUTDOOR SHOW MAP</h1>
+		<p>A map of outdoor music venues for those who wish to see live music but also to avoid crowded, indoor spaces.  All venues are vaccine-only and masking is strongly encouraged.</p>
+
+	<h3> This Week's Shows</h3>
+
+	</div>
+
+	<div id="scroller">
+		
+
+		<ul style="list-style-type:none; padding: 0; margin: 0;">
+			<li><em>Machine Gun Kelly, jxdn, KennyHoopla</em>
+				<br>
+				Pier 17 <br>
+				<em>9/14</em> 6 PM
+				</li>
+				<br>
+				<li><em>!!!, Jennifer Vanilla</em>
+				<br>
+				Elsewhere <br>
+				<em>9/15</em> 7 PM
+				</li>
+				<br>
+				<li><em>The Front Bottoms, Oso Oso, Sydney Sprague</em>
+				<br>
+				Pier 17 <br>
+				<em>9/15</em> 7 PM
+				</li>
+				<br>
+				<li><em>Lord Huron, Allison Ponthier</em>
+				<br>
+				Pier 17 <br>
+				<em>9/16</em> 7 PM
+				</li>
+				<br>
+				<li><em>D-Nice, Stephanie Mills, KRS-One, Anthony Hamilton, Melba Moore, Big Daddy Kane, Estelle, The Originals, and more!</em>
+				<br>
+				Prospect Park Bandshell <br>
+				<em>9/16</em> 7 PM
+				</li>
+				<br>
+				<li><em>Aidan Noell (of Nation of Language)</em>
+				<br>
+				The Sultan Room <br>
+				<em>9/16</em> 6 PM
+				</li>
+				<br>
+				<li><em>Banda de los Muertos</em>
+				<br>
+				Mama Tried <br>
+				<em>9/17</em> 7 PM
+				</li>
+				<br>
+				<li><em>Mr Eazi, DJ Bembona, Ajo</em>
+				<br>
+				Prospect Park Bandshell <br>
+				<em>9/17</em> 7 PM
+				</li>
+		</ul></div>
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZXJkbWFuajUiLCJhIjoiY2t0amgweDhkMDZhcDJxbzZzMXdqejF1ciJ9.-MXLMHdwp4mfM818Q7G44w';
+const map = new mapboxgl.Map({
+container: 'map', // container ID
+style: 'mapbox://styles/mapbox/streets-v11', // style URL
+center: [-73.95, 40.675], // starting position [lng, lat]
+zoom: 12 // starting zoom
+});
+
+ map.on('load', function() {
+        map.addSource('places', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': [
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Elsewhere</strong><p><a href="https://www.elsewherebrooklyn.com" target="_blank" title="Opens in a new window">Elsewhere</a> is a multispace venue, including the rooftop, an outdoor venue..</p>',
+                            'icon': 'music'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-73.9232, 40.7094]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong> Nowadays</strong><p> <a href="https://nowadays.nyc" target="_blank" title="Opens in a new window"> Nowadays </a> is a 16,000 square foot multiuse performance space with live music, a large outdoor space and various food vendors. </p>',
+                            'icon': 'music'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-73.9015, 40.6929]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Knockdown Center</strong><p>Knockdown Center <a href="https://knockdown.center/" target="_blank" title="Opens in a new window"> is a massive venue and gallery space featuring both indoor and outdoor spaces as well as frequent immersive installations.</p>',
+                            'icon': 'music'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-73.9141, 40.7154]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>The Turk\'s Inn </strong><p>The <a href="https://thesultanroom.com/" target="_blank" title="Opens in a new window">The Rooftop at Turk\'s Inn</a> offer lives music in an outdoor space above the venue\'s other performance area, the Sultan Room</p>',
+                            'icon': 'music'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-73.9223, 40.7056]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Our Wicked Lady</strong><p>Feeling dandy? A two space venue, <a href="https://www.ourwickedlady.com/" target="_blank" title="Opens in a new window">Our Wicked Lady</a> features both indoor and outdoor spaces serving live music, drinks and food.</p>',
+                            'icon': 'music'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-73.9333, 40.7094]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Mama Tried</strong><p>The annual <a href="http://www.capitalpride.org/parade" target="_blank" title="Opens in a new window">Mama Tried</a> is a cozy bar in  Sunset Park with an outdoor performance space for live shows, many of which are free to the public.</p>',
+                            'icon': 'music'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-74.00080881547325, 40.66067290829985]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Pier 17</strong><p><a href="https://www.pier17ny.com/ target="_blank" title="Opens in a new window">Pier 17</a> is an outdoor space for free summer concerts from the City of New York with a wide range of acts from hip hop to folk to jazz.</p>',
+                            'icon': 'music'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-74.0015, 40.7056]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Prospect Park Bandshell</strong><p><a href="https://www.prospectpark.org/visit-the-park/things-to-do/celebrate-brooklyn/" target="_blank" title="Opens in a new window"> BRIC Celebrate Brooklyn!</a> is a summer music festival featuring free and ticketed live performances by various up-and-coming musicians. </p>',
+                            'icon': 'music'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-73.97659061909184, 40.66373178665922]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Truckeroo</strong><p><a href="http://www.truckeroodc.com/www/" target="_blank">Truckeroo</a> brings dozens of food trucks, live music, and games to half and M Street SE (across from Navy Yard Metro Station) today from 11:00 a.m. to 11:00 p.m.</p>',
+                            'icon': 'music'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-77.007481, 38.876516]
+                        }
+                    }
+                ]
+            }
+        });
+        // Add a layer showing the places.
+        map.addLayer({
+            'id': 'places',
+            'type': 'symbol',
+            'source': 'places',
+            'layout': {
+                'icon-image': '{icon}-15',
+                'icon-allow-overlap': true
+            }
+        });
+
+        // When a click event occurs on a feature in the places layer, open a popup at the
+        // location of the feature, with description HTML from its properties.
+        map.on('click', 'places', function(e) {
+            var coordinates = e.features[0].geometry.coordinates.slice();
+            var description = e.features[0].properties.description;
+
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+
+            new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+        });
+
+        // Change the cursor to a pointer when the mouse is over the places layer.
+        map.on('mouseenter', 'places', function() {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'places', function() {
+            map.getCanvas().style.cursor = '';
+        });
+    });
+
+</script>
+ 
+</body>
+</html>
+
+   
