@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>canvas_image</title>
+ <style type="text/css">
+ 	body {background-color: grey;}
+  	canvas {border: 7px solid black;}
+  	#tutorial { display: block;
+  margin-left: auto;
+  margin-right: auto;}
+  </style>
+</head>
+<body>
+<canvas id="tutorial" width="900" height="600"></canvas>
+<script type="application/javascript">
+
+var background = new Image();
+var imgTag = new Image();
+var imgTag2 = new Image();
+var canvas = document.getElementById('tutorial');
+var ctx = canvas.getContext("2d");
+var ctx2 = canvas.getContext("2d");
+
+
+var xpos = 0;
+var xpos2 =0;
+var width1 =152;
+var height1 = 300;
+var width2 = 152;
+var height2= 300;
+
+background.src = "background.png";
+imgTag.onload = animate;
+imgTag.src = "character.png";
+imgTag2.src ="character.png";
+function animate() {
+ ctx.clearRect(0, 0, canvas.width, canvas.height);
+ ctx.drawImage(background, 0, 0, 900,600);  // clear canvas
+ requestAnimationFrame(animate);       
+ //ctx.translate(xpos,0);
+ ctx.font = "30px Arial";
+var gradient = ctx.createLinearGradient(0, 0, 100, 0);
+gradient.addColorStop("0"," blue");
+gradient.addColorStop("0.5", "red");
+gradient.addColorStop("1.0", "black");
+// Fill with gradient
+ctx.fillStyle = gradient;
+ctx.fillText("CHARGE!", 10, 90);
+
+
+if (height1 > 500 )
+	 {
+	 	height1 = 300;
+	 	width1 = 152;
+	 	height2 =300;
+	 	width2= 152;
+	 	ctx.fillText("REPELLED!", 10, 150);
+	 	 
+	 }
+ ctx.drawImage(imgTag, 200 +xpos, 150, width1, height1);
+ ctx.drawImage(imgTag2, 600 +xpos2, 200, width2, height2);
+                       // draw image at current position
+ }
+
+
+canvas.addEventListener('mousedown', function(e) {
+xpos = xpos + 5;
+xpos2 = xpos2 - 5;
+});
+
+canvas.addEventListener('click', function(e) {
+width1 = width1 + 5;
+width2 = width2 + 5;
+height1 = height1 + 5;
+height2 = height2 +5;
+});
+</script>
+</body>
+</html>
