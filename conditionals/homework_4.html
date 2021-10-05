@@ -31,30 +31,37 @@
     function colorChange(){
             // Selecting the input element and get its value 
             var inputVal = document.getElementById("myInput").value;
+	    var inv =  document.getElementById("invalidChoice");
             console.log(inputVal);
 
         if (inputVal === 'red') {
         document.body.style.background ="red";
+	inv.innerHTML = " ";
         console.log("red");
         }
         
         else if (inputVal === 'blue') {
             document.body.style.background ="blue";
+		inv.innerHTML = " ";
         }
 
            else if (inputVal === 'orange') {
             document.body.style.background ="orange";
+		   inv.innerHTML = " ";
         }
 
            else if (inputVal === 'green') {
             document.body.style.background ="green";
+		   inv.innerHTML = " ";
         }
 
            else if (inputVal === 'yellow') {
             document.body.style.background ="yellow";
+		   inv.innerHTML = " ";
         }
             else if (inputVal === 'purple') {
             document.body.style.background ="purple";
+		    inv.innerHTML = " ";
         }
 
            else  {
