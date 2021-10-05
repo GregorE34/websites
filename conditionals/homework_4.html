@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>seasons</title>
+    <style>
+        p {
+            color = white;
+        }
+    </style>
+</head>
+<body>
+
+<h1></h1>
+
+<div id="color_change">
+
+<p >Choose a color for the page: red, blue, green, yellow, orange or purple. </p>
+<form>
+  <label for="color">Color:</label><br>
+  <input type="text" id="color_choice" name="color_choice"><br>
+  <input type="submit" value="Submit">
+</form>
+
+<p id="invalidChoice"></p>
+
+ <input type="text" id="myInput">
+    <button type="button" onclick="colorChange();">Get Value</button>
+
+</div>
+
+<body>
+   
+    
+        
+
+
+
+<script type="text/javascript">
+
+    function colorChange(){
+            // Selecting the input element and get its value 
+            var inputVal = document.getElementById("myInput").value;
+            console.log(inputVal);
+
+        if (inputVal === 'red') {
+        document.body.style.background ="red";
+        console.log("red");
+        }
+        
+        else if (inputVal === 'blue') {
+            document.body.style.background ="blue";
+        }
+
+           else if (inputVal === 'orange') {
+            document.body.style.background ="orange";
+        }
+
+           else if (inputVal === 'green') {
+            document.body.style.background ="green";
+        }
+
+           else if (inputVal === 'yellow') {
+            document.body.style.background ="yellow";
+        }
+            else if (inputVal === 'purple') {
+            document.body.style.background ="purple";
+        }
+
+           else  {
+            document.body.style.background ="white";
+            document.getElementById("invalidChoice").innerHTML = "You made an invalid choice! Please try again."
+
+        }
+        }
+
+</script>
+</body>
+</html>
